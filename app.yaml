@@ -13,3 +13,8 @@ health_check:
 handlers:
   - url: /(.*)$
     script: \1
+#To enable access to the Zend Server console then uncomment the lines below
+#network:
+#  forwarded_ports:
+#    - 10081
+#    - 10082
