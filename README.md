@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Fortune Speak
 =============
 
@@ -217,3 +218,6 @@ During this step you will:
 
         git stash
         git checkout step6
+=======
+# zend-server-docker-managed-vms
+>>>>>>> 46056003cc428762b133bf4d12f56d5551dcf92c

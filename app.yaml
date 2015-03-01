@@ -1,14 +1,15 @@
-module: default
-version: 1
-runtime: python27
+#module: default
+version: 2
+runtime: custom
 vm: true
 api_version: 1
 threadsafe: yes
 manual_scaling:
   instances: 1
-vm_settings:
-  machine_type: n1-standard-2
-
+instance_class: B4_1G
+health_check:
+  enable_health_check: False
+# Serve php scripts.
 handlers:
-- url: .*
-  script: main.app
+  - url: /(.*)$
+    script: \1
