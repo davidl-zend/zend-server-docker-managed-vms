@@ -17,4 +17,4 @@ handlers:
 #network:
 #  forwarded_ports:
 #    - 10081
-#    - 10082
+#     - 10082

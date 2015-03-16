@@ -1,7 +1,12 @@
 #!/bin/bash
 
-#Start haproxy to redirect port 8080 to port 80 for app engine
-/usr/sbin/haproxy -f /etc/haproxy/haproxy.cfg
+#Start haproxy to expose Zend Server on port 8080 for app engine support
+echo "Exposing Zend Server on port 8080 for app engine support"
+/etc/init.d/haproxy start
+/usr/sbin/haproxy -f /etc/haproxy/haproxy.cfg -D -p /var/run/haproxy.pid
+
+#Clean left-over semaphores from previous Zend Server runs
+sudo -u zend /usr/local/zend/bin/clean_semaphores.sh
 
 if [[ -z $ZEND_LICENSE_ORDER || -z $ZEND_LICENSE_KEY ]]; then
 ZEND_LICENSE_ORDER=docker-zs
@@ -103,9 +108,11 @@ fi
 
 echo "restarting ZS"
 $ZS_MANAGE restart -p -N $WEB_API_KEY -K $WEB_API_KEY_HASH
+
 echo "Zend Server is ready for use
 Your application is available at http://$APP_IP
 To access Zend Server, navigate to http://$APP_IP:10081
 Your admin password is `cat /root/zend-password`"
+
 
 exec /usr/local/bin/nothing
