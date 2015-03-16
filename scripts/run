@@ -109,6 +109,8 @@ fi
 echo "restarting ZS"
 $ZS_MANAGE restart -p -N $WEB_API_KEY -K $WEB_API_KEY_HASH
 
+/usr/local/zend/bin/php /usr/local/zend/bin/gui_passwd.php $ZS_ADMIN_PASSWORD
+
 echo "Zend Server is ready for use
 Your application is available at http://$APP_IP
 To access Zend Server, navigate to http://$APP_IP:10081
