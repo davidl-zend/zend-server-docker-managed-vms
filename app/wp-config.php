@@ -15,7 +15,8 @@
      */
 
     // Required for batcache use
-    define('WP_CACHE', true);
+//    define('WP_CACHE', true);
+    define('WP_CACHE', false);
 
     // ** MySQL settings - You can get this info from your web host ** //
     /** The name of the database for WordPress */
@@ -24,12 +25,13 @@
     if (isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'],'Google App Engine') !== false) {
         /** Live environment Cloud SQL login and SITE_URL info */
         /** Note that from App Engine, the password is not required, so leave it blank here */
-        define('DB_HOST', ':/cloudsql/managedvmspoc:wordpress');
+        #define('DB_HOST', ':/cloudsql/your-project-id:wordpress');
+        define('DB_HOST', '173.194.254.44');
         define('DB_USER', 'root');
-        define('DB_PASSWORD', '');
+        define('DB_PASSWORD', 'password');
     } else {
         /** Local environment MySQL login info */
-        define('DB_HOST', '127.0.0.1');
+        define('DB_HOST', '173.194.254.44');
         define('DB_USER', 'root');
         define('DB_PASSWORD', 'password');
     }
